@@ -37,7 +37,7 @@ export default function Navbar() {
             面板
           </Link>
         </div>
-        <div className="hidden md:flex flex-none" style={{ minWidth: '200px' }}>
+        <div className="flex-none" style={{ minWidth: '200px' }}>
           <ConnectButton />
         </div>
         <div className="md:hidden flex items-center">

@@ -10,7 +10,7 @@ import { StakeNFTModal } from './StakeNFTModal';
 import { WithdrawModal } from './WithdrawModal';
 import Swal from 'sweetalert2';
 import TokenImage from '@/components/TokenImage';
-import Image from 'next/image';
+import Image from 'next/image'; // Ensure you're using the correct import
 
 export default function PropertyManagement() {
   const [showMintModal, setShowMintModal] = useState(false);
@@ -104,8 +104,8 @@ export default function PropertyManagement() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row">
-      <div className="w-full md:w-1/2 md:pr-4 mb-8 md:mb-0">
+    <div className="container mx-auto px-4 py-8 flex">
+      <div className="w-1/2 pr-4">
         <h1 className="text-4xl font-bold mb-8 text-gray-900">管理房地產 NFT</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <button onClick={() => setShowMintModal(true)} className="btn-primary text-gray-800 bg-white border-gray-300">
@@ -133,7 +133,7 @@ export default function PropertyManagement() {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-1/2 md:pl-4 flex items-center justify-center">
+      <div className="w-1/2 pl-4 flex items-center justify-center">
         <Image
           src="/whitehouse.webp"
           alt="Your image description"

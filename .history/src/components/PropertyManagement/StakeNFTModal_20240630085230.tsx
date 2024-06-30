@@ -35,7 +35,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
   useEffect(() => {
     if (isApproveSuccess) {
       setIsApproved(true);
-      Swal.fire('Success', 'NFT 授權成功', 'success');
+      Swal.fire('Success', 'NFT approved for transfer', 'success');
     }
   }, [isApproveSuccess]);
 

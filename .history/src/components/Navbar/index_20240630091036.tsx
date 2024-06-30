@@ -28,19 +28,21 @@ export default function Navbar() {
             />
           </Link>
         </div>
-        <div className="hidden md:flex flex-1 justify-center items-center space-x-6">
-          <Link href="/fundraising" className="px-4 py-2 text-gray-800 hover:text-gray-600">
-            開放募資
-          </Link>
-          <span className="text-gray-300">|</span>
-          <Link href="/dashboard" className="px-4 py-2 text-gray-800 hover:text-gray-600">
-            面板
-          </Link>
+        <div className="flex-1 flex justify-center items-center space-x-6 ml-28 hidden md:flex">
+          <div className="relative bg-white rounded-full shadow-md flex items-center">
+            <Link href="/fundraising" className="px-4 py-2 text-gray-800 hover:text-gray-600">
+              開放募資
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/dashboard" className="px-4 py-2 text-gray-800 hover:text-gray-600">
+              面板
+            </Link>
+          </div>
         </div>
-        <div className="hidden md:flex flex-none" style={{ minWidth: '200px' }}>
+        <div className="flex-none" style={{ minWidth: '200px' }}>
           <ConnectButton />
         </div>
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden">
           {isOpen ? (
             <FontAwesomeIcon
               className="text-gray-800 text-2xl sm:text-3xl cursor-pointer"
@@ -57,16 +59,14 @@ export default function Navbar() {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden bg-gray-200 p-4">
-          <Link href="/fundraising" className="block text-gray-800 hover:text-gray-600 font-semibold mb-2">
+        <div className="flex flex-col md:hidden bg-gray-200 p-4 gap-5">
+          <Link href="/fundraising" className="text-gray-800 hover:text-gray-600 font-semibold">
             開放募資
           </Link>
-          <Link href="/dashboard" className="block text-gray-800 hover:text-gray-600 font-semibold mb-2">
+          <Link href="/dashboard" className="text-gray-800 hover:text-gray-600 font-semibold">
             面板
           </Link>
-          <div className="mt-4">
-            <ConnectButton />
-          </div>
+          <ConnectButton />
         </div>
       )}
     </nav>
