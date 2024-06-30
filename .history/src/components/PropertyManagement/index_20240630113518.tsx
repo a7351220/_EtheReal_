@@ -25,19 +25,20 @@ export default function PropertyManagement() {
     args: [address],
   });
 
+  console.log('userNFTs:', userNFTs);
 
   const { data: tokenURI } = useReadContract({
     address: houseAssetAddress,
     abi: HouseAssetABI,
     functionName: 'tokenIdToURI',
-    args: [2],
+    args: [1],
   });
   
   const { data: ownerAddress } = useReadContract({
     address: houseAssetAddress,
     abi: HouseAssetABI,
     functionName: 'ownerOf',
-    args: [2],
+    args: [1],
   });
 
   const { data: nextTokenId } = useReadContract({

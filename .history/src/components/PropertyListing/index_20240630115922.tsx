@@ -57,12 +57,10 @@ export default function PropertyListing() {
   }, [stakeInfo, isLoading, isError, currentTokenId, hasMoreProperties]);
 
   useEffect(() => {
-    // Reset properties when component mounts
-    setProperties([]);
-    setCurrentTokenId(2);
-    setLoading(true);
-    setHasMoreProperties(true);
-  }, []);
+    if (!hasMoreProperties) {
+      setLoading(false);
+    }
+  }, [hasMoreProperties]);
 
   if (loading) {
     return <div>Loading... (Loaded {properties.length} properties)</div>;

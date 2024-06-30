@@ -23,7 +23,7 @@ export default function PropertyListing() {
   const [properties, setProperties] = useState<StakeInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentTokenId, setCurrentTokenId] = useState(2);
+  const [currentTokenId, setCurrentTokenId] = useState(1);
   const [hasMoreProperties, setHasMoreProperties] = useState(true);
 
   const { data: stakeInfo, isLoading, isError } = useReadContract({
@@ -57,12 +57,10 @@ export default function PropertyListing() {
   }, [stakeInfo, isLoading, isError, currentTokenId, hasMoreProperties]);
 
   useEffect(() => {
-    // Reset properties when component mounts
-    setProperties([]);
-    setCurrentTokenId(2);
-    setLoading(true);
-    setHasMoreProperties(true);
-  }, []);
+    if (!hasMoreProperties) {
+      setLoading(false);
+    }
+  }, [hasMoreProperties]);
 
   if (loading) {
     return <div>Loading... (Loaded {properties.length} properties)</div>;
