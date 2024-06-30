@@ -34,9 +34,9 @@ export default function PropertyDetails() {
   if (!id) return <div>Loading...</div>;
 
   if (isLoading) return <div>Loading...</div>;
-  if (!stakeInfo) return <div>Property not found</div>;
+  if (!stakeInfo) return <div>找不到房地產</div>;
 
-  // Convert seconds to days and hours
+  // 將秒數轉換為天和小時
   const durationInSeconds = stakeInfo.duration;
   const days = Math.floor(Number(durationInSeconds) / (24 * 3600));
   const hours = Math.floor((Number(durationInSeconds) % (24 * 3600)) / 3600);
@@ -45,18 +45,18 @@ export default function PropertyDetails() {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Navbar />
       <main className="flex-grow py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gray-50">
-        <h1 className="text-4xl font-bold mb-8 text-gray-900">Property #{id} Details</h1>
+        <h1 className="text-4xl font-bold mb-8 text-gray-900">房地產 #{id} 細節</h1>
         <div className="bg-white shadow-md rounded-lg p-6">
-          <p className="text-gray-700"><strong>Owner:</strong> {stakeInfo.owner}</p>
-          <p className="text-gray-700"><strong>Stake Time:</strong> {new Date(Number(stakeInfo.stakeTime) * 1000).toLocaleString()}</p>
-          <p className="text-gray-700"><strong>Duration:</strong> {days} days {hours} hours</p>
-          <p className="text-gray-700"><strong>Price per Token:</strong> {formatEther(stakeInfo.pricePerToken)} ETH</p>
-          <p className="text-gray-700"><strong>Monthly Rent:</strong> {formatEther(stakeInfo.rentPricePerMonth)} ETH</p>
-          <p className="text-gray-700"><strong>Total Token Supply:</strong> {stakeInfo.totalSupply.toString()}</p>
-          <p className="text-gray-700"><strong>Current Supply:</strong> {stakeInfo.currentSupply.toString()}</p>
-          <p className="text-gray-700"><strong>Start Time:</strong> {new Date(Number(stakeInfo.startTime) * 1000).toLocaleString()}</p>
-          <p className="text-gray-700"><strong>End Time:</strong> {new Date(Number(stakeInfo.endTime) * 1000).toLocaleString()}</p>
-          <p className="text-gray-700"><strong>Token Address:</strong> {stakeInfo.tokenAddress}</p>
+          <p className="text-gray-700"><strong>擁有者:</strong> {stakeInfo.owner}</p>
+          <p className="text-gray-700"><strong>質押時間:</strong> {new Date(Number(stakeInfo.stakeTime) * 1000).toLocaleString()}</p>
+          <p className="text-gray-700"><strong>時長:</strong> {days} 天 {hours} 小時</p>
+          <p className="text-gray-700"><strong>每個代幣的價格:</strong> {formatEther(stakeInfo.pricePerToken)} ETH</p>
+          <p className="text-gray-700"><strong>每月租金:</strong> {formatEther(stakeInfo.rentPricePerMonth)} ETH</p>
+          <p className="text-gray-700"><strong>代幣總發行量:</strong> {stakeInfo.totalSupply.toString()}</p>
+          <p className="text-gray-700"><strong>目前售出:</strong> {stakeInfo.currentSupply.toString()}</p>
+          <p className="text-gray-700"><strong>開始時間:</strong> {new Date(Number(stakeInfo.startTime) * 1000).toLocaleString()}</p>
+          <p className="text-gray-700"><strong>結束時間:</strong> {new Date(Number(stakeInfo.endTime) * 1000).toLocaleString()}</p>
+          <p className="text-gray-700"><strong>代幣地址:</strong> {stakeInfo.tokenAddress}</p>
         </div>
       </main>
       <Footer />

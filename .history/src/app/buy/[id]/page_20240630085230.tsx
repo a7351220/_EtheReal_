@@ -57,7 +57,7 @@ export default function BuyToken() {
   useEffect(() => {
     if (isBought) {
       Swal.fire({
-        title: 'Purchase Successful!',
+        title: '購買成功！',
         icon: 'success',
       });
       setAmount('');
@@ -76,15 +76,15 @@ export default function BuyToken() {
         value: parseEther(totalPrice),
       });
     } catch (error) {
-      console.error('Token purchase failed:', error);
-      Swal.fire('Error', `Token purchase failed: ${error}`, 'error');
+      console.error('購買代幣失敗:', error);
+      Swal.fire('錯誤', `購買代幣失敗: ${error}`, 'error');
     }
   };
 
   if (!isConnected) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100">
-        <p className="text-2xl text-gray-800">Please connect your wallet.</p>
+        <p className="text-2xl text-gray-800">請連結錢包。</p>
       </div>
     );
   }
@@ -93,32 +93,32 @@ export default function BuyToken() {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Navbar />
       <main className="flex-grow py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gray-50">
-        <h1 className="text-4xl font-bold mb-8 text-gray-900">Buy Tokens #{id}</h1>
+        <h1 className="text-4xl font-bold mb-8 text-gray-900">購買代幣 #{id}</h1>
         <div className="bg-white shadow-md rounded-lg p-6">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">
-              Token Amount
+              代幣數量
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="amount"
               type="number"
-              placeholder="Enter amount"
+              placeholder="輸入數量"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               min={minAmount?.toString()}
             />
           </div>
           <div className="mb-4">
-            <p className="text-gray-700">Total Price: {totalPrice} ETH</p>
-            <p className="text-gray-700">Minimum Purchase Amount: {minAmount?.toString() || 'Loading...'}</p>
+            <p className="text-gray-700">總價: {totalPrice} ETH</p>
+            <p className="text-gray-700">最低購買量: {minAmount?.toString() || '加载中...'}</p>
           </div>
           <button
             onClick={handleBuyTokens}
             disabled={isBuying}
             className="btn-primary w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-300"
           >
-            {isBuying ? 'Purchasing...' : 'Buy Tokens'}
+            {isBuying ? '購買中...' : '購買代幣'}
           </button>
         </div>
       </main>

@@ -15,12 +15,12 @@ interface StakeNFTModalProps {
 }
 
 export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
-  const defaultTokenId = '2';
+  const defaultTokenId = '1';
   const defaultStartTime = new Date().toISOString().slice(0, 16); // current time in ISO format
   const defaultEndTime = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 16); // one week later
-  const defaultMinAmount = '1';
+  const defaultMinAmount = '0.1';
   const defaultMonths = '12';
-  const defaultPricePerToken = '0.001';
+  const defaultPricePerToken = '0.01';
   const defaultTotalSupply = '1000';
   const defaultRentPricePerMonth = '0.5';
 
@@ -44,13 +44,13 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
   useEffect(() => {
     if (isApproveSuccess) {
       setIsApproved(true);
-      Swal.fire('Success', 'NFT approval successful', 'success');
+      Swal.fire('Success', 'NFT 授權成功', 'success');
     }
   }, [isApproveSuccess]);
 
   useEffect(() => {
     if (isStakeSuccess) {
-      Swal.fire('Success', 'NFT staking successful', 'success');
+      Swal.fire('Success', 'NFT 質押成功', 'success');
       handleClose();
     }
   }, [isStakeSuccess, handleClose]);
@@ -142,7 +142,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center p-4 sm:p-6 lg:p-8">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md sm:max-w-lg lg:max-w-2xl">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-gray-900">Stake NFT</h2>
+          <h2 className="text-xl font-bold text-gray-900">質押 NFT</h2>
           <FontAwesomeIcon
             icon={faXmark}
             className="cursor-pointer text-gray-900"
@@ -161,7 +161,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
           {errors.tokenId && <p className="text-red-500 text-xs mt-1">{errors.tokenId}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Start Time</label>
+          <label className="block text-sm font-medium text-gray-700">開始時間</label>
           <input
             type="datetime-local"
             className={`w-full p-2 border rounded ${errors.startTime ? 'border-red-500' : 'border-gray-300'}`}
@@ -171,7 +171,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
           {errors.startTime && <p className="text-red-500 text-xs mt-1">{errors.startTime}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">End Time</label>
+          <label className="block text-sm font-medium text-gray-700">結束時間</label>
           <input
             type="datetime-local"
             className={`w-full p-2 border rounded ${errors.endTime ? 'border-red-500' : 'border-gray-300'}`}
@@ -182,7 +182,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Minimum Amount
+            最小數量
             <FontAwesomeIcon icon={faInfoCircle} className="ml-1 text-gray-500" title="Minimum investment amount in ETH" />
           </label>
           <input
@@ -196,7 +196,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
           {errors.minAmount && <p className="text-red-500 text-xs mt-1">{errors.minAmount}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Number of Months</label>
+          <label className="block text-sm font-medium text-gray-700">幾個月</label>
           <input
             type="number"
             placeholder="e.g., 12"
@@ -208,7 +208,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Price per Token (ETH)
+            每個代幣的價格 (ETH)
             <FontAwesomeIcon icon={faInfoCircle} className="ml-1 text-gray-500" title="Price for each token in ETH" />
           </label>
           <input
@@ -223,7 +223,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Total Supply  
+            總供應量  
             <FontAwesomeIcon icon={faInfoCircle} className="ml-1 text-gray-500" title="Total number of tokens to be minted" />
           </label>
           <input
@@ -237,7 +237,7 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
-            Monthly Rent Price (ETH)  
+            每月租金 (ETH)  
             <FontAwesomeIcon icon={faInfoCircle} className="ml-1 text-gray-500" title="Monthly rental price in ETH" />
           </label>
           <input
@@ -255,14 +255,14 @@ export function StakeNFTModal({ show, handleClose }: StakeNFTModalProps) {
           className="bg-gray-900 text-white py-2 px-4 rounded w-full mb-4 hover:bg-gray-700" 
           disabled={isApproved || isApproving}
         >
-          {isApproved ? "Approved" : isApproving ? "Approving..." : "Approve NFT Transfer"}
+          {isApproved ? "已授權" : isApproving ? "授權中..." : "授權 NFT 轉移"}
         </button>
         <button 
           onClick={handleStake} 
           className="bg-gray-900 text-white py-2 px-4 rounded w-full hover:bg-gray-700" 
           disabled={!isApproved || isStaking}
         >
-          {isStaking ? "Staking..." : "Stake NFT"}
+          {isStaking ? "質押中..." : "質押 NFT"}
         </button>
       </div>
     </div>
