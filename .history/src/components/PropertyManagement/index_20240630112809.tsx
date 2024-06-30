@@ -29,14 +29,14 @@ export default function PropertyManagement() {
     address: houseAssetAddress,
     abi: HouseAssetABI,
     functionName: 'tokenIdToURI',
-    args: [2],
+    args: [1],
   });
   
   const { data: ownerAddress } = useReadContract({
     address: houseAssetAddress,
     abi: HouseAssetABI,
     functionName: 'ownerOf',
-    args: [2],
+    args: [1],
   });
 
   const { data: nextTokenId } = useReadContract({
